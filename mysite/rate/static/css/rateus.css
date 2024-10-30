@@ -227,11 +227,11 @@ h3 {
 }
 .card__title,
 .profile__title {
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
 }
 .card__text,
 .profile__text {
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
 }
 .card__buttons,
 .profile__buttons {
@@ -254,7 +254,7 @@ h3 {
 }
 .card__links,
 .profile__links {
-  margin: 0 0 10px 0;
+  margin: 20px 0 10px 0;
 }
 .card__links li,
 .profile__links li {
