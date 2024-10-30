@@ -1,6 +1,8 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
+from .services import get_filename_by
+
 
 class Author(models.Model):
     name = models.CharField(max_length=40)
@@ -26,6 +28,9 @@ class Link(models.Model):
     class Meta:
         ordering = ["title"]
         indexes = [models.Index(fields=["title"])]
+
+    def get_icon_filename(self):
+        return get_filename_by(self.url)
 
 
 class Review(models.Model):

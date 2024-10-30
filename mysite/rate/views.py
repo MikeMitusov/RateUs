@@ -6,6 +6,6 @@ from .models import Author, Link, Review
 class AuthorListView(ListView):
     model = Author
     queryset = Author.objects.filter(active=True)
-    context_object_name = "author"
+    context_object_name = "authors"
     template_name = "rate/author/list.html"
     paginate_by = 3
