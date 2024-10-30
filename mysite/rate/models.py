@@ -1,7 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from .services import get_path_by
+from .services import get_filename_by
 
 
 class Author(models.Model):
@@ -33,7 +33,7 @@ class Link(models.Model):
         url = self.url
         if url != "x.com":
             url = self.url.replace("x", "")
-        return get_path_by(url)
+        return get_filename_by(url)
 
 
 class Review(models.Model):
