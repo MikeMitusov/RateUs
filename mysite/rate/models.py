@@ -29,7 +29,7 @@ class Link(models.Model):
         ordering = ["title"]
         indexes = [models.Index(fields=["title"])]
 
-    def get_icon_path(self):
+    def get_icon_url(self):
         url = self.url
         if url != "x.com":
             url = self.url.replace("x", "")
