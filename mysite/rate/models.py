@@ -1,7 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from .services import get_filename_by
+from .services import get_path_by
 
 
 class Author(models.Model):
@@ -29,8 +29,11 @@ class Link(models.Model):
         ordering = ["title"]
         indexes = [models.Index(fields=["title"])]
 
-    def get_icon_filename(self):
-        return get_filename_by(self.url)
+    def get_icon_path(self):
+        url = self.url
+        if url != "x.com":
+            url = self.url.replace("x", "")
+        return get_path_by(url)
 
 
 class Review(models.Model):

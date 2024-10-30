@@ -11,3 +11,10 @@ def get_filename_by(obj_str, path_dir=None):
     for f in os.listdir(path_dir):
         if f.split(".")[0] in obj_str:
             return f
+
+
+def get_path_by(obj_str, path_dir=None):
+    fn = get_filename_by(obj_str, path_dir)
+    if not fn:
+        return
+    return finders.find(f"images/logos/{fn}")
