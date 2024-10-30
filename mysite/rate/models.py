@@ -12,12 +12,20 @@ class Author(models.Model):
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ["created"]
+        indexes = [models.Index(fields=["created"])]
+
 
 class Link(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="links")
     title = models.CharField(max_length=20)
     url = models.URLField()
     active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["title"]
+        indexes = [models.Index(fields=["title"])]
 
 
 class Review(models.Model):
@@ -30,3 +38,7 @@ class Review(models.Model):
     body = models.TextField()
     active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created"]
+        indexes = [models.Index(fields=["created"])]
