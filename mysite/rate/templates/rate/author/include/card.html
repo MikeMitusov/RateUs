@@ -10,7 +10,7 @@
                     <span class="icon">
                         <img src="{% static 'images/logos/'|add:link.get_icon_url %}" alt="">
                     </span>
-                    <a class='link-primary' href="{{ link.url }}">{{ link.title }}</a>
+                    <a class='link-primary' target='_blank' href="{{ link.url }}">{{ link.title }}</a>
                 </li>
             {% endfor %}
         </ul>

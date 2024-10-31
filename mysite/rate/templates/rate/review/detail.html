@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="content">
+        {% include 'rate/include/header.html' with depth=3 review=review author=review.author %}
         <div class="container container-large">
             {% include 'rate/review/include.html' with review=review %}
         </div>
