@@ -29,7 +29,7 @@ h3 {
     font-weight: 500;
 
     @media (max-width: 400px) {
-        font-size: $fs;
+        font-size: $fs * 1.2;
     }
 }
 
@@ -123,12 +123,13 @@ h3 {
         max-height: 250px;
         overflow: hidden;
         margin: 0 0 10px 0;
+        min-width: 100%;
     }
     &__image {
         max-width: 100%;
+        min-width: 100%;
         object-fit: cover;
     }
-
     &__info {
         padding: 10px;
     }
@@ -231,14 +232,17 @@ footer {
 
 .detail-row {
     display: flex;
+    font-size: $fs;
+    flex: 1 1 100%;
     width: $page;
-    margin: auto;
+    margin: 20px auto;
     column-gap: 30px;
     min-height: 100%;
 
     @media (max-width: 1200px) {
         flex-direction: column;
         width: 90%;
+        row-gap: 20px;
     }
 
     @media (max-width: 400px) {
@@ -270,8 +274,18 @@ footer {
 
     &__info {
         display: flex;
+        justify-content: space-between;
         column-gap: 10px;
         margin: 0 0 10px 0;
+    }
+
+    h3 {
+        font-size: 1.3em;
+
+        span {
+            font-size: 0.55em;
+            font-weight: 400;
+        }
     }
 
     &__left {
@@ -308,7 +322,7 @@ footer {
             display: inline-block;
             width: 20px;
             height: 20px;
-            background: url("icons/star.svg") center/20px no-repeat;
+            background: url("../images/icons/star.svg") center/20px no-repeat;
             filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(353deg) brightness(102%)
                 contrast(102%);
 
@@ -391,4 +405,8 @@ input[type="submit"] {
             }
         }
     }
+}
+
+p {
+    line-height: 1.3;
 }

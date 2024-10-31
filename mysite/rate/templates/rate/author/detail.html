@@ -1,1 +1,23 @@
-<p>Hello world {{ author.name }}</p>
+{% extends 'rate/base.html' %}
+
+{% block title %}{{ author.name }}{% endblock title %}
+
+{% block content %}
+    <div class="content">
+        {% include 'rate/include/header.html' with depth=2 author=author %}
+        <div class="detail-row">
+            <div class="profile-container">
+                {% include 'rate/author/include/card.html' with author=author %}
+            </div>
+            <div class="reviews">
+                {% for review in reviews %}
+                    {% include 'rate/review/detail.html' with review=review %}
+                {% empty %}
+                    <h3>No reviews yet</h3>
+                {% endfor %}
+            </div>
+        </div>
+        {% include "rate/include/footer.html" with page_obj=reviews %}
+    </div>
+
+{% endblock content %}
