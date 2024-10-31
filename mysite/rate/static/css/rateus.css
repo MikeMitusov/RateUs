@@ -119,7 +119,15 @@ h3 {
 
 .container {
   max-width: 90%;
+  min-width: 90%;
   margin: 20px auto;
+}
+
+.container-large {
+  font-size: 1.625em;
+}
+.container-large .rating__star::after {
+  transform: translate(-50%, -70%);
 }
 
 .breadcrumbs {
@@ -183,6 +191,7 @@ h3 {
   .cards p,
   .cards a {
     font-size: 0.8em;
+    line-break: anywhere;
   }
 }
 
@@ -332,7 +341,7 @@ footer {
   display: flex;
   font-size: 1.25em;
   flex: 1 1 100%;
-  width: 1170px;
+  width: 90%;
   margin: 20px auto;
   column-gap: 30px;
   min-height: 100%;
@@ -375,6 +384,12 @@ footer {
   justify-content: space-between;
   column-gap: 10px;
   margin: 0 0 10px 0;
+}
+@media (max-width: 600px) {
+  .review__info {
+    flex-direction: column;
+    row-gap: 10px;
+  }
 }
 .review h3 {
   font-size: 1.3em;
@@ -423,7 +438,7 @@ footer {
     background-size: 15px;
     width: 15px;
     height: 15px;
-    transform: translate(-50%, -50%);
+    transform: translate(-150%, -100%);
   }
 }
 .rating__star_active {

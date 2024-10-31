@@ -10,8 +10,11 @@
                 {% include 'rate/author/include/card.html' with author=author %}
             </div>
             <div class="reviews">
+                {% if reviews %}
+                    <h3>Rating: {{ author.get_rating }}</h3>
+                {% endif%}
                 {% for review in reviews %}
-                    {% include 'rate/review/detail.html' with review=review %}
+                    {% include 'rate/review/include.html' with review=review %}
                 {% empty %}
                     <h3>No reviews yet</h3>
                 {% endfor %}

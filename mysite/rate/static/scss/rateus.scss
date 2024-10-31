@@ -44,7 +44,16 @@ h3 {
 
 .container {
     max-width: 90%;
+    min-width: 90%;
     margin: 20px auto;
+}
+
+.container-large {
+    font-size: $fs * 1.3;
+
+    .rating__star::after {
+        transform: translate(-50%, -70%);
+    }
 }
 
 .breadcrumbs {
@@ -97,6 +106,7 @@ h3 {
         p,
         a {
             font-size: 0.8em;
+            line-break: anywhere;
         }
     }
 }
@@ -234,7 +244,7 @@ footer {
     display: flex;
     font-size: $fs;
     flex: 1 1 100%;
-    width: $page;
+    width: 90%;
     margin: 20px auto;
     column-gap: 30px;
     min-height: 100%;
@@ -277,6 +287,11 @@ footer {
         justify-content: space-between;
         column-gap: 10px;
         margin: 0 0 10px 0;
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            row-gap: 10px;
+        }
     }
 
     h3 {
@@ -330,7 +345,7 @@ footer {
                 background-size: 15px;
                 width: 15px;
                 height: 15px;
-                transform: translate(-50%, -50%);
+                transform: translate(-150%, -100%);
             }
         }
         &_active {

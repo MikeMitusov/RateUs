@@ -22,6 +22,11 @@ class Author(models.Model):
     def get_absolute_url(self):
         return reverse("rate:author_detail", args=[self.id])
 
+    def get_rating(self):
+        return round(
+            self.reviews.all().aggregate(models.Avg("rating"))["rating__avg"], 1
+        )
+
 
 class Link(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="links")
