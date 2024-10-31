@@ -218,7 +218,7 @@ h3 {
 }
 .card__image,
 .profile__image {
-  min-width: 100%;
+  max-width: 100%;
   object-fit: cover;
 }
 .card__info,

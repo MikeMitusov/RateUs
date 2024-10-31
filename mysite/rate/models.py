@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.urls import reverse
 
 from .services import get_filename_by
 
@@ -17,6 +18,9 @@ class Author(models.Model):
     class Meta:
         ordering = ["created"]
         indexes = [models.Index(fields=["created"])]
+
+    def get_absolute_url(self):
+        return reverse("rate:author_detail", args=[self.id])
 
 
 class Link(models.Model):

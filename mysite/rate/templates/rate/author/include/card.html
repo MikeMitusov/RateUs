@@ -1,0 +1,19 @@
+{%load static %}
+<div class="card">
+    <div class="card__wrapperimg"><img src="{{ author.avatar.url }}" alt="{{ author.name }}" class="card__image"></div>
+    <div class="card__info">
+        <h3 class="card__title">{{ author.name }}</h3>
+        <p class="card__text text-primary">{{ author.bio }}</p>
+        <ul class="card__links">
+            {% for link in author.links.all %}
+                <li>
+                    <span class="icon">
+                        <img src="{% static 'images/logos/'|add:link.get_icon_url %}" alt="">
+                    </span>
+                    <a class='link-primary' href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="#" class="card__button button-primary">Action</a>
+    </div>
+</div>

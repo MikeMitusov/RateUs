@@ -1,0 +1,23 @@
+<header>
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                {% if depth > 0 %}
+                    <li><a href="{% url 'rate:author_list' %}">Home</a></li>
+                {% endif %}
+                {% if depth > 1 %}
+                    <li><a href="{% url 'rate:author_detail' author_id=author.id %}">{{ author.name }}</a></li>
+                {% endif %}
+                {% if depth > 2 %}
+                    {% if review %}
+                        <li><a href="#">Review</a></li>
+                    {% elif email_form %}
+                        <li><a href="#">Write</a></li>
+                    {% elif review_form %}
+                        <li><a href="#">Write</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>

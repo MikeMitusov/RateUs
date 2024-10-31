@@ -5,25 +5,14 @@
 {% load static %}
 {% block content %}
     <div class="content">
+        {% include 'rate/include/header.html' with depth=1 %}
         <div class="cards">
-            {% for author in authors %}
-                <div class="container">
-                    <div class="card">
-                        <div class="card__wrapperimg"><img src="{{ author.avatar.url }}" alt="{{ author.name }}" class="card__image"></div>
-                        <div class="card__info">
-                            <h3 class="card__title">{{ author.name }}</h3>
-                            <p class="card__text text-primary">{{ author.bio }}</p>
-                            <ul class="card__links">
-                                {% for link in author.links.all %}
-                                    <li><span class="icon"><img src="{% static "images/logos/"|add:link.get_icon_url %}" alt=""></span>
-                                        <a class='link-primary' href="{{ link.url }}">{{ link.title }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                            <a href="#" class="card__button button-primary">Action</a>
-                        </div>
-                    </div>
-            {% endfor %}
+            <div class="container">
+                {% for author in authors %}
+                    {% include "rate/author/include/card.html" with author=author %}
+                {% endfor %}
+            </div>
         </div>
+        {% include "rate/include/footer.html" with page_obj=page_obj %}
     </div>
 {% endblock content %}

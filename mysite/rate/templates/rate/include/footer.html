@@ -1,0 +1,16 @@
+<footer>
+    <div class="container">
+        <div class="footer__row">
+            <ul class="pagination">
+                <li><a class='link-primary' id="previous" href="?page={% if page_obj.has_previous %}{{ page_obj.previous_page_number }}{% else %}{{ page_obj.number }}{% endif %}"
+                    >Previous</a></li>
+                <li><a class='link-primary' id="current" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                {% if page_obj.paginator.num_pages > 1 %}
+                    <li>...</li>
+                    <li><a class='link-primary' id="last" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+                {% endif %}
+                <li><a class='link-primary' id="next" href="?page={% if page_obj.has_next %}{{ page_obj.next_page_number }}{% else %}{{ page_obj.number }}{% endif %}">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
