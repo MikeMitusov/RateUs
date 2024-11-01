@@ -44,7 +44,7 @@ class Link(models.Model):
 
     def get_icon_url(self):
         url = self.url
-        if url != "x.com":
+        if not url.find("x.com"):
             url = self.url.replace("x", "")
         return get_filename_by(url)
 
