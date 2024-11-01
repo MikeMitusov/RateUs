@@ -11,7 +11,7 @@ class Author(models.Model):
     avatar = models.ImageField(
         upload_to="uploads/%Y/%m/%d/", validators=[validate_avatar]
     )
-    bio = models.CharField(max_length=150)
+    bio = models.TextField()
     allow_mail = models.BooleanField(
         "Allow clients to send emails to author", default=True
     )
