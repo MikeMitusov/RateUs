@@ -1,6 +1,6 @@
 <form class="form" method='POST'>
     {% csrf_token %}
-    <form class="form" method="post" action={% url 'rate:review_write' author.id %}>
+    <form class="form" method="post">
         <div class="form__top">
             <div class="rating_form rating">
                 <input type="radio" name="rating" value='5' class="rating_form__1 rating__star">

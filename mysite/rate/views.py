@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Author, Link, Review
-from .forms import WriteReviewForm
+from .forms import WriteReviewForm, WriteEmailForm
 
 
 class AuthorListView(ListView):
@@ -62,4 +62,21 @@ def review_write(request, author_id):
         request,
         "rate/review/write.html",
         {"form": form, "author": author},
+    )
+
+
+def author_write(request, author_id):
+    author = get_object_or_404(Author, id=author_id, active=True)
+
+    if request.method == "POST":
+        form = WriteEmailForm(request.POST)
+
+        if form.is_valid():
+            # send email
+            return redirect(reverse("rate:author_detail", args=(author_id,)))
+    else:
+        form = WriteEmailForm()
+
+    return render(
+        request, "rate/author/form_write.html", {"author": author, "form": form}
     )

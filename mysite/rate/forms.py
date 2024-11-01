@@ -11,4 +11,4 @@ class WriteReviewForm(forms.ModelForm):
 class WriteEmailForm(forms.Form):
     name = forms.CharField(max_length=30)
     email = forms.EmailField()
-    body = forms.Textarea()
+    body = forms.CharField(max_length=10_000, widget=forms.Textarea)

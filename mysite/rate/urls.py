@@ -9,4 +9,5 @@ urlpatterns = [
     path("<int:author_id>", views.author_detail, name="author_detail"),
     path("<int:author_id>/<int:review_id>", views.review_detail, name="review_detail"),
     path("<int:author_id>/review", views.review_write, name="review_write"),
+    path("<int:author_id>/write", views.author_write, name="author_write"),
 ]

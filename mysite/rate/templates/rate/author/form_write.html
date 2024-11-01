@@ -7,7 +7,7 @@
         {% include 'rate/include/header.html' with depth=3 review=1 author_id=author.id %}
         <div class="detail-row detail-row_form">
             {% include 'rate/author/include/card.html' with author=author text='form' %}
-            {% include 'rate/review/form.html' with form=form %}
+            {% include 'rate/author/form.html' with form=form %}
         </div>
     </div>
 {% endblock %}

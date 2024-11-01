@@ -1,0 +1,11 @@
+<form class="form" method='POST'>
+    {% csrf_token %}
+    <form class="form" method="post">
+        <div class="form__info">
+            {{ form.name.as_field_group }}
+            {{ form.email.as_field_group }}
+        </div>
+        {{ form.body.as_field_group }}
+        <input type="submit" class="button-primary" value="Rate">
+    </form>
+</form>
