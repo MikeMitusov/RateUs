@@ -10,6 +10,8 @@
             <div class="container">
                 {% for author in authors %}
                     {% include "rate/author/include/card.html" with author=author %}
+                {% empty %}
+                    <h3 style="margin: 0 auto;">Empty :/</h3>
                 {% endfor %}
             </div>
         </div>
