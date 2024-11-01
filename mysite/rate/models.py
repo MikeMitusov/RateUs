@@ -2,15 +2,19 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
 
-from .services import get_filename_by
+from .services import get_filename_by, validate_avatar
 
 
 class Author(models.Model):
     name = models.CharField(max_length=40)
     email = models.EmailField()
-    avatar = models.ImageField(upload_to="uploads/%Y/%m/%d/")
+    avatar = models.ImageField(
+        upload_to="uploads/%Y/%m/%d/", validators=[validate_avatar]
+    )
     bio = models.CharField(max_length=150)
-    allow_mail = models.BooleanField(default=True)
+    allow_mail = models.BooleanField(
+        "Allow clients to send emails to author", default=True
+    )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
