@@ -18,8 +18,8 @@
             {% if text != 'form' %}
                 <a href="{% if not text %}{% url 'rate:author_detail' author.id %}{% else %}{% url 'rate:review_write' author.id %}{% endif %}" class="card__button button-primary">{% if not text %}More{% else %}{{ text }}{% endif %}</a>
             {% endif%}
-            {% if author.allow_mail and not text %}
-                <a href="{% url 'rate:author_write' author.id %}" class="card__button button-primary">Write</a>
+            {% if author.allow_mail and text != 'form' %}
+                <a href="{% url 'rate:author_write' author.id %}" class="card__button button-primary">Send email</a>
             {% endif %}
         </div>
     </div>

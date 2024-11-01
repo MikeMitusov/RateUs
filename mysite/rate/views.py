@@ -2,7 +2,8 @@ from django.urls import reverse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .models import Author, Link, Review
+from django.core.mail import send_mail
+from .models import Author, Review
 from .forms import WriteReviewForm, WriteEmailForm
 
 
@@ -72,7 +73,14 @@ def author_write(request, author_id):
         form = WriteEmailForm(request.POST)
 
         if form.is_valid():
-            # send email
+            title = (
+                f"You've got a message from {form.cleaned_data['name'].capitalize()}"
+            )
+            email = form.cleaned_data["email"]
+            body = f"{email} sent you a message:\n{form.cleaned_data['body']}"
+            to = author.email
+            send_mail(title, body, None, [to])
+
             return redirect(reverse("rate:author_detail", args=(author_id,)))
     else:
         form = WriteEmailForm()

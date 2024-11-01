@@ -412,6 +412,11 @@ footer {
   }
 }
 
+.rating {
+  display: flex;
+  column-gap: 5px;
+  flex-wrap: nowrap;
+}
 .rating__star {
   display: inline-block;
   width: 30px;
