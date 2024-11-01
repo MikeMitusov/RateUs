@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import ListView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Author, Link, Review
+from .forms import WriteReviewForm
 
 
 class AuthorListView(ListView):
@@ -18,7 +20,10 @@ def author_detail(request, author_id):
     reviews = Paginator(reviews, 5)
 
     try:
-        page_obj = reviews.page(request.GET.get("page", 1))
+        num = request.GET.get("page", 1)
+        if num == "-1":
+            num = reviews.num_pages
+        page_obj = reviews.page(num)
     except PageNotAnInteger:
         page_obj = reviews.page(1)
     except EmptyPage:
@@ -34,3 +39,27 @@ def review_detail(request, author_id, review_id):
     review = get_object_or_404(Review, active=True, author=author, id=review_id)
 
     return render(request, "rate/review/detail.html", {"review": review})
+
+
+def review_write(request, author_id):
+    author = get_object_or_404(Author, id=author_id)
+
+    if request.method == "POST":
+        form = WriteReviewForm(request.POST)
+
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.author = author
+            review.save()
+            return redirect(
+                reverse("rate:author_detail", args=(author_id,)) + "?page=-1"
+            )
+    else:
+        form = WriteReviewForm()
+        review = None
+
+    return render(
+        request,
+        "rate/review/write.html",
+        {"form": form, "author": author},
+    )

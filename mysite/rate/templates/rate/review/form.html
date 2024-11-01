@@ -1,0 +1,20 @@
+<form class="form" method='POST'>
+    {% csrf_token %}
+    <form class="form" method="post" action={% url 'rate:review_write' author.id %}>
+        <div class="form__top">
+            <div class="rating_form rating">
+                <input type="radio" name="rating" value='5' class="rating_form__1 rating__star">
+                <input type="radio" name="rating" value='4' class="rating_form__2 rating__star">
+                <input type="radio" name="rating" value='3' class="rating_form__3 rating__star">
+                <input type="radio" name="rating" value='2' class="rating_form__4 rating__star">
+                <input type="radio" name="rating" value='1' checked class="rating_form__5 rating__star">
+            </div>
+        </div>
+        <div class="form__info">
+            {{ form.name.as_field_group }}
+            {{ form.email.as_field_group }}
+        </div>
+        {{ form.body.as_field_group }}
+        <input type="submit" class="button-primary" value="Rate">
+    </form>
+</form>

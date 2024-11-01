@@ -260,6 +260,10 @@ footer {
     }
 }
 
+.detail-row_form {
+    flex: 0 1 100%;
+}
+
 .profile-container {
     .profile {
         max-width: 100%;
@@ -369,6 +373,7 @@ footer {
 
     &__info {
         min-width: 100%;
+        align-items: baseline;
         display: flex;
         input {
             margin: 0 10px 10px 0;
@@ -376,6 +381,9 @@ footer {
         }
         @media (max-width: 500px) {
             flex-direction: column;
+            input {
+                min-width: 100%;
+            }
         }
     }
 
@@ -383,6 +391,12 @@ footer {
         flex: 1 1 100%;
         width: 100%;
         margin: 0 0 10px 0;
+    }
+
+    label {
+        font-weight: lighter;
+        font-size: 20px;
+        margin: 0 10px 10px 0;
     }
 }
 
@@ -417,6 +431,11 @@ input[type="submit"] {
             &:checked ~ .rating__star,
             &:checked {
                 background: rgb(82, 154, 82);
+            }
+        }
+        .rating__star::after {
+            @media (max-width: 400px) {
+                transform: translate(-50%, -50%);
             }
         }
     }

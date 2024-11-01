@@ -359,6 +359,10 @@ footer {
   }
 }
 
+.detail-row_form {
+  flex: 0 1 100%;
+}
+
 .profile-container .profile {
   max-width: 100%;
 }
@@ -460,6 +464,7 @@ footer {
 }
 .form__info {
   min-width: 100%;
+  align-items: baseline;
   display: flex;
 }
 .form__info input {
@@ -470,11 +475,19 @@ footer {
   .form__info {
     flex-direction: column;
   }
+  .form__info input {
+    min-width: 100%;
+  }
 }
 .form textarea {
   flex: 1 1 100%;
   width: 100%;
   margin: 0 0 10px 0;
+}
+.form label {
+  font-weight: lighter;
+  font-size: 20px;
+  margin: 0 10px 10px 0;
 }
 
 input,
@@ -510,6 +523,11 @@ input[type=submit]:hover {
 }
 .rating_form input:checked ~ .rating__star, .rating_form input:checked {
   background: rgb(82, 154, 82);
+}
+@media (max-width: 400px) {
+  .rating_form .rating__star::after {
+    transform: translate(-50%, -50%);
+  }
 }
 
 p {
